@@ -1,0 +1,19 @@
+environment: development
+
+apphost: k8s
+
+kubehelmapi:
+  label:
+    name: aspnet3core
+
+  container:
+    name: aspnet3
+    pullPolicy: IfNotPresent
+    image: anbumani27/kubehelmapi
+    tag: latest
+    port: 80
+  replicas: 3
+
+  service:
+    port: 8888
+    type: NodePort

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-kubehelmapi-deployment
+  labels:
+    app: {{ .Values.kubehelmapi.label.name }}
+spec:
+  replicas: {{ .Values.kubehelmapi.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.kubehelmapi.label.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.kubehelmapi.label.name }}
+        environment: {{ .Values.environment }}
+    spec:
+      containers:
+        - name: {{ .Values.kubehelmapi.container.name }}
+          image: {{ .Values.kubehelmapi.container.image }}:{{ .Values.kubehelmapi.container.tag }}
+          imagePullPolicy: {{ .Values.kubehelmapi.container.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.kubehelmapi.container.port }}
+          env:
+            - name: apphost
+              value: {{ .Values.apphost }}
+            - name: appenvironment
+              value: {{ .Values.environment }}

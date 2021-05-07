@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-kubehelmapi-service
+  labels:
+    app: {{ .Values.kubehelmapi.label.name }}
+spec:
+  ports:
+  - port: {{ .Values.kubehelmapi.service.port }}
+    protocol: TCP
+    targetPort: {{ .Values.kubehelmapi.container.port }}
+  selector:
+    app: {{ .Values.kubehelmapi.label.name }}
+  type: {{ .Values.kubehelmapi.service.type }}
