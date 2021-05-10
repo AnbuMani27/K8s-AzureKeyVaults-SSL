@@ -1,4 +1,4 @@
-# SSL Certificates with Azure Key Vault and Nginx Ingress Controller (Azure Kubernetes)
+# SSL Certificate on Azure Kubernetes Service via Azure KeyVaults
  
 WiKi : https://github.com/AnbuMani27/Kube-Helm-CustomDomain-KeyVaultSSL/wiki
 
